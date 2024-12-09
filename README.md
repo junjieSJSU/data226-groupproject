@@ -1,6 +1,6 @@
 # Data 226: Group Project
 Instructor: Keeyong Han  
-Authors: Jeff Chong, David Thach, Cyril Goud, Pranav Saravanan
+Authors: Jeff Chong, David Thach, Cyril Goud, Pranav Saravanan.
 This repository contains the files, code and images relevant to the group project of DATA 226 at San Jose State University.  
 It is the collaborative work of the members of Team 9, and no one else.
 
