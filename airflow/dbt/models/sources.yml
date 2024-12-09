@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: nbastats
+    schema: raw_data
+    description: "Schema which stores raw tables (ETL)"
+    tables:
+      - name: raw_match_data
+        identifier: nba_games
+        description: "Match data including date, season, home_team, away_team, home_score and away_score"

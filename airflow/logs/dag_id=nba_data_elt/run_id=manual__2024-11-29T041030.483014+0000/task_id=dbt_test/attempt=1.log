@@ -1,0 +1,55 @@
+[2024-11-29T04:10:44.130+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-11-29T04:10:44.153+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nba_data_elt.dbt_test manual__2024-11-29T04:10:30.483014+00:00 [queued]>
+[2024-11-29T04:10:44.159+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nba_data_elt.dbt_test manual__2024-11-29T04:10:30.483014+00:00 [queued]>
+[2024-11-29T04:10:44.159+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-11-29T04:10:44.169+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_test> on 2024-11-29 04:10:30.483014+00:00
+[2024-11-29T04:10:44.175+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'nba_data_elt', 'dbt_test', 'manual__2024-11-29T04:10:30.483014+00:00', '--job-id', '63', '--raw', '--subdir', 'DAGS_FOLDER/data_elt.py', '--cfg-path', '/tmp/tmpzk1s2ep3']
+[2024-11-29T04:10:44.178+0000] {standard_task_runner.py:91} INFO - Job 63: Subtask dbt_test
+[2024-11-29T04:10:44.178+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=564) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-29T04:10:44.178+0000] {standard_task_runner.py:63} INFO - Started process 566 to run task
+[2024-11-29T04:10:44.210+0000] {task_command.py:426} INFO - Running <TaskInstance: nba_data_elt.dbt_test manual__2024-11-29T04:10:30.483014+00:00 [running]> on host 065cc2990949
+[2024-11-29T04:10:44.272+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='nba_data_elt' AIRFLOW_CTX_TASK_ID='dbt_test' AIRFLOW_CTX_EXECUTION_DATE='2024-11-29T04:10:30.483014+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-29T04:10:30.483014+00:00'
+[2024-11-29T04:10:44.272+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-11-29T04:10:44.284+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-11-29T04:10:44.284+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt test --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt']
+[2024-11-29T04:10:44.291+0000] {subprocess.py:86} INFO - Output:
+[2024-11-29T04:10:46.039+0000] {subprocess.py:93} INFO - [0m04:10:46  Running with dbt=1.8.7
+[2024-11-29T04:10:46.917+0000] {subprocess.py:93} INFO - [0m04:10:46  Registered adapter: snowflake=1.8.4
+[2024-11-29T04:10:47.645+0000] {subprocess.py:93} INFO - [0m04:10:47  Found 4 models, 11 data tests, 1 source, 575 macros
+[2024-11-29T04:10:47.650+0000] {subprocess.py:93} INFO - [0m04:10:47
+[2024-11-29T04:10:48.285+0000] {subprocess.py:93} INFO - [0m04:10:48  Concurrency: 1 threads (target='dev')
+[2024-11-29T04:10:48.285+0000] {subprocess.py:93} INFO - [0m04:10:48
+[2024-11-29T04:10:48.294+0000] {subprocess.py:93} INFO - [0m04:10:48  1 of 11 START test dbt_utils_unique_combination_of_columns_close_game_season_stats_season__team  [RUN]
+[2024-11-29T04:10:49.033+0000] {subprocess.py:93} INFO - [0m04:10:49  1 of 11 PASS dbt_utils_unique_combination_of_columns_close_game_season_stats_season__team  [[32mPASS[0m in 0.74s]
+[2024-11-29T04:10:49.036+0000] {subprocess.py:93} INFO - [0m04:10:49  2 of 11 START test dbt_utils_unique_combination_of_columns_team_season_biggest_win_loss_team__opponent_team__date  [RUN]
+[2024-11-29T04:10:49.681+0000] {subprocess.py:93} INFO - [0m04:10:49  2 of 11 PASS dbt_utils_unique_combination_of_columns_team_season_biggest_win_loss_team__opponent_team__date  [[32mPASS[0m in 0.64s]
+[2024-11-29T04:10:49.684+0000] {subprocess.py:93} INFO - [0m04:10:49  3 of 11 START test dbt_utils_unique_combination_of_columns_team_season_stats_season__team  [RUN]
+[2024-11-29T04:10:50.328+0000] {subprocess.py:93} INFO - [0m04:10:50  3 of 11 PASS dbt_utils_unique_combination_of_columns_team_season_stats_season__team  [[32mPASS[0m in 0.64s]
+[2024-11-29T04:10:50.331+0000] {subprocess.py:93} INFO - [0m04:10:50  4 of 11 START test not_null_close_game_season_stats_season ..................... [RUN]
+[2024-11-29T04:10:50.996+0000] {subprocess.py:93} INFO - [0m04:10:50  4 of 11 PASS not_null_close_game_season_stats_season ........................... [[32mPASS[0m in 0.66s]
+[2024-11-29T04:10:50.999+0000] {subprocess.py:93} INFO - [0m04:10:50  5 of 11 START test not_null_close_game_season_stats_team ....................... [RUN]
+[2024-11-29T04:10:51.791+0000] {subprocess.py:93} INFO - [0m04:10:51  5 of 11 PASS not_null_close_game_season_stats_team ............................. [[32mPASS[0m in 0.79s]
+[2024-11-29T04:10:51.794+0000] {subprocess.py:93} INFO - [0m04:10:51  6 of 11 START test not_null_team_season_biggest_win_loss_margin_type ........... [RUN]
+[2024-11-29T04:10:52.432+0000] {subprocess.py:93} INFO - [0m04:10:52  6 of 11 PASS not_null_team_season_biggest_win_loss_margin_type ................. [[32mPASS[0m in 0.64s]
+[2024-11-29T04:10:52.435+0000] {subprocess.py:93} INFO - [0m04:10:52  7 of 11 START test not_null_team_season_biggest_win_loss_season ................ [RUN]
+[2024-11-29T04:10:53.271+0000] {subprocess.py:93} INFO - [0m04:10:53  7 of 11 PASS not_null_team_season_biggest_win_loss_season ...................... [[32mPASS[0m in 0.84s]
+[2024-11-29T04:10:53.274+0000] {subprocess.py:93} INFO - [0m04:10:53  8 of 11 START test not_null_team_season_biggest_win_loss_team .................. [RUN]
+[2024-11-29T04:10:53.939+0000] {subprocess.py:93} INFO - [0m04:10:53  8 of 11 PASS not_null_team_season_biggest_win_loss_team ........................ [[32mPASS[0m in 0.66s]
+[2024-11-29T04:10:53.942+0000] {subprocess.py:93} INFO - [0m04:10:53  9 of 11 START test not_null_team_season_stats_season ........................... [RUN]
+[2024-11-29T04:10:54.616+0000] {subprocess.py:93} INFO - [0m04:10:54  9 of 11 PASS not_null_team_season_stats_season ................................. [[32mPASS[0m in 0.67s]
+[2024-11-29T04:10:54.620+0000] {subprocess.py:93} INFO - [0m04:10:54  10 of 11 START test not_null_team_season_stats_team ............................ [RUN]
+[2024-11-29T04:10:55.296+0000] {subprocess.py:93} INFO - [0m04:10:55  10 of 11 PASS not_null_team_season_stats_team .................................. [[32mPASS[0m in 0.67s]
+[2024-11-29T04:10:55.298+0000] {subprocess.py:93} INFO - [0m04:10:55  11 of 11 START test not_null_team_season_stats_total_games ..................... [RUN]
+[2024-11-29T04:10:55.842+0000] {subprocess.py:93} INFO - [0m04:10:55  11 of 11 PASS not_null_team_season_stats_total_games ........................... [[32mPASS[0m in 0.54s]
+[2024-11-29T04:10:55.848+0000] {subprocess.py:93} INFO - [0m04:10:55
+[2024-11-29T04:10:55.849+0000] {subprocess.py:93} INFO - [0m04:10:55  Finished running 11 data tests in 0 hours 0 minutes and 8.20 seconds (8.20s).
+[2024-11-29T04:10:55.925+0000] {subprocess.py:93} INFO - [0m04:10:55
+[2024-11-29T04:10:55.926+0000] {subprocess.py:93} INFO - [0m04:10:55  [32mCompleted successfully[0m
+[2024-11-29T04:10:55.927+0000] {subprocess.py:93} INFO - [0m04:10:55
+[2024-11-29T04:10:55.928+0000] {subprocess.py:93} INFO - [0m04:10:55  Done. PASS=11 WARN=0 ERROR=0 SKIP=0 TOTAL=11
+[2024-11-29T04:10:56.693+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2024-11-29T04:10:56.694+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-11-29T04:10:56.712+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=nba_data_elt, task_id=dbt_test, run_id=manual__2024-11-29T04:10:30.483014+00:00, execution_date=20241129T041030, start_date=20241129T041044, end_date=20241129T041056
+[2024-11-29T04:10:56.758+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-11-29T04:10:56.775+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-11-29T04:10:56.777+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

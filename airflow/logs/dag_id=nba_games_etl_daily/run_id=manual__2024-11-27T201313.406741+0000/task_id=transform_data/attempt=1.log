@@ -1,0 +1,47 @@
+[2024-11-27T20:13:17.129+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-11-27T20:13:17.149+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nba_games_etl_daily.transform_data manual__2024-11-27T20:13:13.406741+00:00 [queued]>
+[2024-11-27T20:13:17.155+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nba_games_etl_daily.transform_data manual__2024-11-27T20:13:13.406741+00:00 [queued]>
+[2024-11-27T20:13:17.156+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-11-27T20:13:17.164+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): transform_data> on 2024-11-27 20:13:13.406741+00:00
+[2024-11-27T20:13:17.170+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'nba_games_etl_daily', 'transform_data', 'manual__2024-11-27T20:13:13.406741+00:00', '--job-id', '48', '--raw', '--subdir', 'DAGS_FOLDER/daily_data_etl.py', '--cfg-path', '/tmp/tmpgbke9d51']
+[2024-11-27T20:13:17.171+0000] {standard_task_runner.py:91} INFO - Job 48: Subtask transform_data
+[2024-11-27T20:13:17.171+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=1496) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-27T20:13:17.172+0000] {standard_task_runner.py:63} INFO - Started process 1499 to run task
+[2024-11-27T20:13:17.200+0000] {task_command.py:426} INFO - Running <TaskInstance: nba_games_etl_daily.transform_data manual__2024-11-27T20:13:13.406741+00:00 [running]> on host 105fc369984c
+[2024-11-27T20:13:17.266+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='nba_games_etl_daily' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2024-11-27T20:13:13.406741+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-27T20:13:13.406741+00:00'
+[2024-11-27T20:13:17.267+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-11-27T20:13:17.268+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-11-27T20:13:17.268+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/daily_data_etl.py", line 87, in transform_data
+    game_data["date"] = get_previous_day(result['parameters']['date'])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/daily_data_etl.py", line 25, in get_previous_day
+    previous_day = input_date - timedelta(days=1)
+                   ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for -: 'str' and 'datetime.timedelta'
+[2024-11-27T20:13:17.277+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=nba_games_etl_daily, task_id=transform_data, run_id=manual__2024-11-27T20:13:13.406741+00:00, execution_date=20241127T201313, start_date=20241127T201317, end_date=20241127T201317
+[2024-11-27T20:13:17.287+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 48 for task transform_data (unsupported operand type(s) for -: 'str' and 'datetime.timedelta'; 1499)
+[2024-11-27T20:13:17.305+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-11-27T20:13:17.313+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

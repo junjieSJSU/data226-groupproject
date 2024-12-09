@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: team_season_stats
+    description: "Team stats per season containing win/loss count and point averages"
+    columns:
+      - name: season
+        tests:
+          - not_null
+      - name: team
+        tests:
+          - not_null
+      - name: total_games
+        tests:
+          - not_null
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - season
+            - team
+  - name: team_season_biggest_win_loss
+    description: "Team match data showing biggest wins and losses for each season for every team"
+    columns:
+      - name: team
+        tests:
+          - not_null
+      - name: season
+        tests:
+          - not_null
+      - name: margin_type
+        tests:
+          - not_null
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - team
+            - opponent_team
+            - date
+  - name: close_game_season_stats
+    description: "Per season stats regarding performance in close games for every team"
+    columns:
+      - name: season
+        tests:
+          - not_null
+      - name: team
+        tests:
+          - not_null
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - season
+            - team

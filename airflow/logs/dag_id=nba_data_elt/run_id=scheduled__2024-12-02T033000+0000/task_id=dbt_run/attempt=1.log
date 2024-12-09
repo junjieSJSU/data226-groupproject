@@ -1,0 +1,47 @@
+[2024-12-05T04:14:59.015+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-05T04:14:59.048+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nba_data_elt.dbt_run scheduled__2024-12-02T03:30:00+00:00 [queued]>
+[2024-12-05T04:14:59.056+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nba_data_elt.dbt_run scheduled__2024-12-02T03:30:00+00:00 [queued]>
+[2024-12-05T04:14:59.057+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-05T04:14:59.071+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_run> on 2024-12-02 03:30:00+00:00
+[2024-12-05T04:14:59.077+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'nba_data_elt', 'dbt_run', 'scheduled__2024-12-02T03:30:00+00:00', '--job-id', '85', '--raw', '--subdir', 'DAGS_FOLDER/data_elt.py', '--cfg-path', '/tmp/tmp2yt9n1c7']
+[2024-12-05T04:14:59.081+0000] {standard_task_runner.py:91} INFO - Job 85: Subtask dbt_run
+[2024-12-05T04:14:59.082+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=214) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-12-05T04:14:59.083+0000] {standard_task_runner.py:63} INFO - Started process 229 to run task
+[2024-12-05T04:14:59.126+0000] {task_command.py:426} INFO - Running <TaskInstance: nba_data_elt.dbt_run scheduled__2024-12-02T03:30:00+00:00 [running]> on host 065cc2990949
+[2024-12-05T04:14:59.224+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='nba_data_elt' AIRFLOW_CTX_TASK_ID='dbt_run' AIRFLOW_CTX_EXECUTION_DATE='2024-12-02T03:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-12-02T03:30:00+00:00'
+[2024-12-05T04:14:59.225+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-05T04:14:59.241+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-12-05T04:14:59.242+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt run --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt']
+[2024-12-05T04:14:59.250+0000] {subprocess.py:86} INFO - Output:
+[2024-12-05T04:15:02.266+0000] {subprocess.py:93} INFO - [0m04:15:02  Running with dbt=1.8.7
+[2024-12-05T04:15:03.387+0000] {subprocess.py:93} INFO - [0m04:15:03  Registered adapter: snowflake=1.8.4
+[2024-12-05T04:15:04.681+0000] {subprocess.py:93} INFO - [0m04:15:04  Found 4 models, 11 data tests, 1 source, 575 macros
+[2024-12-05T04:15:04.685+0000] {subprocess.py:93} INFO - [0m04:15:04
+[2024-12-05T04:15:05.088+0000] {subprocess.py:93} INFO - [0m04:15:05
+[2024-12-05T04:15:05.089+0000] {subprocess.py:93} INFO - [0m04:15:05  Finished running  in 0 hours 0 minutes and 0.40 seconds (0.40s).
+[2024-12-05T04:15:05.090+0000] {subprocess.py:93} INFO - [0m04:15:05  Encountered an error:
+[2024-12-05T04:15:05.091+0000] {subprocess.py:93} INFO - Runtime Error
+[2024-12-05T04:15:05.091+0000] {subprocess.py:93} INFO -   Database error while listing schemas in database "NBAstats"
+[2024-12-05T04:15:05.091+0000] {subprocess.py:93} INFO -   Database Error
+[2024-12-05T04:15:05.092+0000] {subprocess.py:93} INFO -     250001 (08001): Failed to connect to DB: LWCSPOZ-QHB14029.snowflakecomputing.com:443. Your user account has been temporarily locked due to too many failed attempts. Try again after 15 minutes or contact your account administrator for assistance. For more information about this error, go to https://community.snowflake.com/s/error-your-user-login-has-been-locked.
+[2024-12-05T04:15:05.856+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2024-12-05T04:15:05.859+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-05T04:15:05.873+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2024-12-05T04:15:05.881+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=nba_data_elt, task_id=dbt_run, run_id=scheduled__2024-12-02T03:30:00+00:00, execution_date=20241202T033000, start_date=20241205T041459, end_date=20241205T041505
+[2024-12-05T04:15:05.905+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 85 for task dbt_run (Bash command failed. The command returned a non-zero exit code 2.; 229)
+[2024-12-05T04:15:05.916+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-12-05T04:15:05.947+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-05T04:15:05.952+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

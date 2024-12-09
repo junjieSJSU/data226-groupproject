@@ -1,0 +1,60 @@
+[2024-11-24T19:50:13.127+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-11-24T19:50:13.147+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nba_games_etl.stage_file_to_snowflake manual__2024-11-24T19:50:11.661415+00:00 [queued]>
+[2024-11-24T19:50:13.153+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nba_games_etl.stage_file_to_snowflake manual__2024-11-24T19:50:11.661415+00:00 [queued]>
+[2024-11-24T19:50:13.154+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-11-24T19:50:13.163+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): stage_file_to_snowflake> on 2024-11-24 19:50:11.661415+00:00
+[2024-11-24T19:50:13.170+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'nba_games_etl', 'stage_file_to_snowflake', 'manual__2024-11-24T19:50:11.661415+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/historical_data_etl.py', '--cfg-path', '/tmp/tmpv8zt_pq5']
+[2024-11-24T19:50:13.173+0000] {standard_task_runner.py:91} INFO - Job 6: Subtask stage_file_to_snowflake
+[2024-11-24T19:50:13.177+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=474) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-24T19:50:13.178+0000] {standard_task_runner.py:63} INFO - Started process 477 to run task
+[2024-11-24T19:50:13.212+0000] {task_command.py:426} INFO - Running <TaskInstance: nba_games_etl.stage_file_to_snowflake manual__2024-11-24T19:50:11.661415+00:00 [running]> on host 98bc2e09bbb2
+[2024-11-24T19:50:13.269+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='nba_games_etl' AIRFLOW_CTX_TASK_ID='stage_file_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2024-11-24T19:50:11.661415+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-24T19:50:11.661415+00:00'
+[2024-11-24T19:50:13.270+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-11-24T19:50:13.614+0000] {cursor.py:1149} INFO - Number of results in first chunk: 1
+[2024-11-24T19:50:13.892+0000] {cursor.py:1149} INFO - Number of results in first chunk: 1
+[2024-11-24T19:50:13.893+0000] {logging_mixin.py:188} INFO - Error staging file: 002003 (02000): 01b89786-0004-3867-0002-58cf0003558e: SQL compilation error:
+Stage 'NBASTATS.RAW_DATA.RAW_DATA_STAGE' does not exist or not authorized.
+[2024-11-24T19:50:13.893+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-11-24T19:50:13.894+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/historical_data_etl.py", line 39, in stage_file_to_snowflake
+    raise e
+  File "/opt/airflow/dags/historical_data_etl.py", line 31, in stage_file_to_snowflake
+    con.execute(f"PUT file://{local_file_path} @{snowflake_stage} AUTO_COMPRESS=TRUE;")
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/cursor.py", line 1080, in execute
+    Error.errorhandler_wrapper(self.connection, self, error_class, errvalue)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 290, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 345, in hand_to_other_handler
+    cursor.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 221, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.ProgrammingError: 002003 (02000): 01b89786-0004-3867-0002-58cf0003558e: SQL compilation error:
+Stage 'NBASTATS.RAW_DATA.RAW_DATA_STAGE' does not exist or not authorized.
+[2024-11-24T19:50:13.902+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=nba_games_etl, task_id=stage_file_to_snowflake, run_id=manual__2024-11-24T19:50:11.661415+00:00, execution_date=20241124T195011, start_date=20241124T195013, end_date=20241124T195013
+[2024-11-24T19:50:13.912+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 6 for task stage_file_to_snowflake (002003 (02000): 01b89786-0004-3867-0002-58cf0003558e: SQL compilation error:
+Stage 'NBASTATS.RAW_DATA.RAW_DATA_STAGE' does not exist or not authorized.; 477)
+[2024-11-24T19:50:13.953+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-11-24T19:50:13.963+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

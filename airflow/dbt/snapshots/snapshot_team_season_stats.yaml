@@ -1,0 +1,21 @@
+snapshots:
+  - name: snapshot_team_season_stats
+    relation: ref('team_season_stats')
+    config:
+      unique_key:
+        - team
+        - season
+      strategy: check
+      check_cols: 
+        - team
+        - season
+        - total_games
+        - total_wins
+        - total_losses
+        - win_percentage
+        - avg_ppg
+        - avg_ppg_in_wins
+        - avg_ppg_in_losses
+        - avg_points_allowed
+        - avg_points_allowed_in_wins
+        - avg_points_allowed_in_losses

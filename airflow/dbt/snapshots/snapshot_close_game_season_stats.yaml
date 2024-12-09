@@ -1,0 +1,18 @@
+snapshots:
+  - name: snapshot_close_game_season_stats
+    relation: ref('close_game_season_stats')
+    config:
+      unique_key:
+        - team
+        - season
+      strategy: check
+      check_cols: 
+        - team
+        - season
+        - total_close_games
+        - close_game_wins
+        - close_game_losses
+        - avg_points_scored_close_games
+        - avg_points_allowed_close_games
+        - avg_ppg_in_close_wins
+        - avg_ppg_in_close_losses

@@ -1,0 +1,47 @@
+[2024-11-29T04:10:31.136+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-11-29T04:10:31.191+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nba_data_elt.dbt_run scheduled__2024-11-28T03:30:00+00:00 [queued]>
+[2024-11-29T04:10:31.201+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nba_data_elt.dbt_run scheduled__2024-11-28T03:30:00+00:00 [queued]>
+[2024-11-29T04:10:31.202+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-11-29T04:10:31.218+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_run> on 2024-11-28 03:30:00+00:00
+[2024-11-29T04:10:31.224+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'nba_data_elt', 'dbt_run', 'scheduled__2024-11-28T03:30:00+00:00', '--job-id', '61', '--raw', '--subdir', 'DAGS_FOLDER/data_elt.py', '--cfg-path', '/tmp/tmpaj7_kvgf']
+[2024-11-29T04:10:31.227+0000] {standard_task_runner.py:91} INFO - Job 61: Subtask dbt_run
+[2024-11-29T04:10:31.227+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=471) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-29T04:10:31.228+0000] {standard_task_runner.py:63} INFO - Started process 479 to run task
+[2024-11-29T04:10:31.267+0000] {task_command.py:426} INFO - Running <TaskInstance: nba_data_elt.dbt_run scheduled__2024-11-28T03:30:00+00:00 [running]> on host 065cc2990949
+[2024-11-29T04:10:31.338+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='nba_data_elt' AIRFLOW_CTX_TASK_ID='dbt_run' AIRFLOW_CTX_EXECUTION_DATE='2024-11-28T03:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-28T03:30:00+00:00'
+[2024-11-29T04:10:31.339+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-11-29T04:10:31.353+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-11-29T04:10:31.354+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '/home/***/.local/bin/dbt run --profiles-dir /opt/***/dbt --project-dir /opt/***/dbt']
+[2024-11-29T04:10:31.361+0000] {subprocess.py:86} INFO - Output:
+[2024-11-29T04:10:33.035+0000] {subprocess.py:93} INFO - [0m04:10:33  Running with dbt=1.8.7
+[2024-11-29T04:10:34.124+0000] {subprocess.py:93} INFO - [0m04:10:34  Registered adapter: snowflake=1.8.4
+[2024-11-29T04:10:34.374+0000] {subprocess.py:93} INFO - [0m04:10:34  Unable to do partial parsing because profile has changed
+[2024-11-29T04:10:35.845+0000] {subprocess.py:93} INFO - [0m04:10:35  [[33mWARNING[0m]: Deprecated functionality
+[2024-11-29T04:10:35.846+0000] {subprocess.py:93} INFO - The `tests` config has been renamed to `data_tests`. Please see
+[2024-11-29T04:10:35.846+0000] {subprocess.py:93} INFO - https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+[2024-11-29T04:10:35.847+0000] {subprocess.py:93} INFO - information.
+[2024-11-29T04:10:36.109+0000] {subprocess.py:93} INFO - [0m04:10:36  [[33mWARNING[0m]: Did not find matching node for patch with name 'snapshot_team_season_biggest_win_loss' in the 'snapshots' section of file 'snapshots/snapshot_team_season_stats.yaml'
+[2024-11-29T04:10:36.317+0000] {subprocess.py:93} INFO - [0m04:10:36  Found 4 models, 11 data tests, 1 source, 575 macros
+[2024-11-29T04:10:36.320+0000] {subprocess.py:93} INFO - [0m04:10:36
+[2024-11-29T04:10:37.485+0000] {subprocess.py:93} INFO - [0m04:10:37  Concurrency: 1 threads (target='dev')
+[2024-11-29T04:10:37.487+0000] {subprocess.py:93} INFO - [0m04:10:37
+[2024-11-29T04:10:37.498+0000] {subprocess.py:93} INFO - [0m04:10:37  1 of 4 START sql view model analytics.team_results ............................. [RUN]
+[2024-11-29T04:10:38.340+0000] {subprocess.py:93} INFO - [0m04:10:38  1 of 4 OK created sql view model analytics.team_results ........................ [[32mSUCCESS 1[0m in 0.84s]
+[2024-11-29T04:10:38.344+0000] {subprocess.py:93} INFO - [0m04:10:38  2 of 4 START sql table model analytics.close_game_season_stats ................. [RUN]
+[2024-11-29T04:10:39.626+0000] {subprocess.py:93} INFO - [0m04:10:39  2 of 4 OK created sql table model analytics.close_game_season_stats ............ [[32mSUCCESS 1[0m in 1.28s]
+[2024-11-29T04:10:39.628+0000] {subprocess.py:93} INFO - [0m04:10:39  3 of 4 START sql table model analytics.team_season_biggest_win_loss ............ [RUN]
+[2024-11-29T04:10:41.183+0000] {subprocess.py:93} INFO - [0m04:10:41  3 of 4 OK created sql table model analytics.team_season_biggest_win_loss ....... [[32mSUCCESS 1[0m in 1.55s]
+[2024-11-29T04:10:41.188+0000] {subprocess.py:93} INFO - [0m04:10:41  4 of 4 START sql table model analytics.team_season_stats ....................... [RUN]
+[2024-11-29T04:10:42.619+0000] {subprocess.py:93} INFO - [0m04:10:42  4 of 4 OK created sql table model analytics.team_season_stats .................. [[32mSUCCESS 1[0m in 1.43s]
+[2024-11-29T04:10:42.623+0000] {subprocess.py:93} INFO - [0m04:10:42
+[2024-11-29T04:10:42.624+0000] {subprocess.py:93} INFO - [0m04:10:42  Finished running 1 view model, 3 table models in 0 hours 0 minutes and 6.30 seconds (6.30s).
+[2024-11-29T04:10:42.688+0000] {subprocess.py:93} INFO - [0m04:10:42
+[2024-11-29T04:10:42.690+0000] {subprocess.py:93} INFO - [0m04:10:42  [32mCompleted successfully[0m
+[2024-11-29T04:10:42.691+0000] {subprocess.py:93} INFO - [0m04:10:42
+[2024-11-29T04:10:42.691+0000] {subprocess.py:93} INFO - [0m04:10:42  Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[2024-11-29T04:10:43.441+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2024-11-29T04:10:43.442+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-11-29T04:10:43.461+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=nba_data_elt, task_id=dbt_run, run_id=scheduled__2024-11-28T03:30:00+00:00, execution_date=20241128T033000, start_date=20241129T041031, end_date=20241129T041043
+[2024-11-29T04:10:43.489+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-11-29T04:10:43.507+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-11-29T04:10:43.510+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

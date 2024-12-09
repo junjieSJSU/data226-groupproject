@@ -1,0 +1,17 @@
+[2024-11-26T00:08:25.744+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-11-26T00:08:25.763+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nba_games_etl_daily.transform_data manual__2024-11-26T00:08:21.355015+00:00 [queued]>
+[2024-11-26T00:08:25.768+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nba_games_etl_daily.transform_data manual__2024-11-26T00:08:21.355015+00:00 [queued]>
+[2024-11-26T00:08:25.769+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-11-26T00:08:25.779+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): transform_data> on 2024-11-26 00:08:21.355015+00:00
+[2024-11-26T00:08:25.785+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'nba_games_etl_daily', 'transform_data', 'manual__2024-11-26T00:08:21.355015+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/daily_data_etl.py', '--cfg-path', '/tmp/tmpw0g0getk']
+[2024-11-26T00:08:25.787+0000] {standard_task_runner.py:91} INFO - Job 23: Subtask transform_data
+[2024-11-26T00:08:25.787+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=673) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-26T00:08:25.788+0000] {standard_task_runner.py:63} INFO - Started process 682 to run task
+[2024-11-26T00:08:22.471+0000] {task_command.py:426} INFO - Running <TaskInstance: nba_games_etl_daily.transform_data manual__2024-11-26T00:08:21.355015+00:00 [running]> on host 98bc2e09bbb2
+[2024-11-26T00:08:28.598+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='nba_games_etl_daily' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2024-11-26T00:08:21.355015+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-26T00:08:21.355015+00:00'
+[2024-11-26T00:08:28.599+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-11-26T00:08:28.600+0000] {python.py:237} INFO - Done. Returned value was: [{'date': '2024-11-25', 'season': '2024-2025', 'home_team': 'Cleveland Cavaliers', 'home_score': 122, 'away_team': 'Toronto Raptors', 'away_score': 108}, {'date': '2024-11-25', 'season': '2024-2025', 'home_team': 'Sacramento Kings', 'home_score': 103, 'away_team': 'Brooklyn Nets', 'away_score': 108}]
+[2024-11-26T00:08:28.601+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-11-26T00:08:28.627+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=nba_games_etl_daily, task_id=transform_data, run_id=manual__2024-11-26T00:08:21.355015+00:00, execution_date=20241126T000821, start_date=20241126T000825, end_date=20241126T000828
+[2024-11-26T00:08:28.677+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-11-26T00:08:28.685+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

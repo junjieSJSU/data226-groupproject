@@ -1,0 +1,1 @@
+[2024-12-05T04:15:03.326+0000] {task_context_logger.py:104} ERROR - Executor reports task instance <TaskInstance: nba_games_etl_daily.extract_data scheduled__2024-12-04T02:30:00+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?
